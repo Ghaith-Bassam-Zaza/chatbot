@@ -1,4 +1,7 @@
-from nltk import word_tokenize,PorterStemmer
+from nltk import word_tokenize
+import nltk
+from nltk.stem.porter import PorterStemmer
+nltk.download('punkt')
 import numpy as np
 def tokenize(sentense):
     return word_tokenize(sentense)

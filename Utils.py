@@ -3,8 +3,8 @@ import nltk
 from nltk.stem.porter import PorterStemmer
 nltk.download('punkt_tab')
 import numpy as np
-def tokenize(sentense):
-    return word_tokenize(sentense)
+def tokenize(sentence):
+    return word_tokenize(sentence)
 
 stemmer = PorterStemmer()
 def stem(word):

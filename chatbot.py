@@ -29,13 +29,7 @@ model.eval()
 # create bot
 bot_name = "Foulan"
 print("Let's chat! type 'quit' to exit.")
-
-# bot loop
-while True:
-    sentence = input("You: ")
-    # end loop
-    if sentence =="quit":
-        break
+def get_bot_response(sentence):
     # pre-process input then push it into the model
     sentence = tokenize(sentence)
     x = bag_of_word(sentence,all_words)
@@ -53,6 +47,15 @@ while True:
     if prob.item() > .75:
         for intent in intents["intents"]:
             if tag == intent['tag']:
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
+                return f"{bot_name}: {random.choice(intent['responses'])}"
     else:
-        print(f"{bot_name}: Can u please clearify, I do not understand the previous sentence!")
+        return f"{bot_name}: Can u please clearify, I do not understand the previous sentence!"
+
+if __name__ == "__main__":
+    # bot loop
+    while True:
+        sentence = input("You: ")
+        # end loop
+        if sentence == "quit":
+            break
+        print(get_bot_response(sentence))
